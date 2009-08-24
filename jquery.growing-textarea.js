@@ -19,7 +19,7 @@
       var div = $("<div class='faketextarea' style='position:absolute;left:-10000px;width:" + w + "px;'></div>");
       textarea.after(div);
       var resizeBox = function(){
-        var html = textarea.val().replace(/(&lt;|>)/g, '').replace(/\n/g,"<br>|");
+        var html = textarea.val().replace(/(<|>)/g, '').replace(/\n/g,"<br>|");
         if(html!=div.html()) {
           div.html(html);
           var h = div.height();
