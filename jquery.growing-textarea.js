@@ -24,7 +24,7 @@
           div.html(html);
           var h = div.height();
           prevh = textarea.height();
-          var newh = h&lt;=minh?minh:(h>settings.maxHeight?settings.maxHeight:h);
+          var newh = h<=minh?minh:(h>settings.maxHeight?settings.maxHeight:h);
           newh += settings.buffer;
           if(newh>=settings.maxHeight) {
             textarea.css("overflow","auto");
