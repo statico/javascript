@@ -15,9 +15,13 @@
     return this.each(function(){
       var textarea = $(this); //cache the textarea
       var minh = textarea.height()>settings.minHeight?textarea.height():settings.minHeight;
-      var w = parseInt(textarea.width()||textarea.css("width")); //get the width of the textarea
-      var div = $("<div class='faketextarea' style='position:absolute;left:-10000px;width:" + w + "px;'></div>");
-      textarea.after(div);
+      var w = parseInt(textarea.width()||textarea.outerWidth()||textarea.css("width")); //get the width of the textarea
+      var padding = "padding:"+textarea.css("paddingTop") + " " + textarea.css("paddingRight") + " " + textarea.css("paddingBottom") + " " + textarea.css("paddingLeft")+";";
+      var fontsize = "font-size:"+textarea.css("fontSize")+";";
+      var fontweight = "font-weight:"+textarea.css("fontWeight")+";";
+      var lineheight = "";
+      lineheight = parseInt(textarea.css("lineHeight"));
+      $("body").append(div);
       var resizeBox = function(){
         var html = textarea.val().replace(/(<|>)/g, '').replace(/\n/g,"<br>|");
         if(html!=div.html()) {
