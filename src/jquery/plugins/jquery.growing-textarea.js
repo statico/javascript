@@ -16,6 +16,14 @@
       var textarea = $(this); //cache the textarea
       var minh = textarea.height()>settings.minHeight?textarea.height():settings.minHeight;
       var w = parseInt(textarea.width()||textarea.outerWidth()||textarea.css("width")); //get the width of the textarea
+
+      // Firefox seems leave 2px less of space for textareas than for divs, so
+      // make the hidden div 2px narrower.  Let's err on the side adding too
+      // much space instead of not showing text that's being typed.
+      if ($.browser.mozilla) {
+        w -= 2;
+      }
+
       var padding = "padding:"+textarea.css("paddingTop") + " " + textarea.css("paddingRight") + " " + textarea.css("paddingBottom") + " " + textarea.css("paddingLeft")+";";
       var fontsize = "font-size:"+textarea.css("fontSize")+";";
       var fontweight = "font-weight:"+textarea.css("fontWeight")+";";
